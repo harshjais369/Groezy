@@ -1,0 +1,30 @@
+{
+  "cred": [
+    {
+      "username": "nidhi_singh_4141",
+      "psk": "ig0123",
+      "session_id": "{'uuids': {'phone_id': 'f49b5762-0891-44f5-bfe1-7cf888e2ffda', 'uuid': '3a389c9f-3ec7-4419-87a4-00750775f1f0', 'client_session_id': 'e7ac8a9d-72bd-4e53-997a-5afa3339b1ac', 'advertising_id': '6d7b7758-4a3e-4621-a92a-83bad721cf92', 'device_id': 'android-fa970dde0a3a19e5'}, 'authorization_data': {'ds_user_id': '47643945109', 'sessionid': '47643945109%3AcIr7xfq2KMUeub%3A7', 'should_use_header_over_cookies': True}, 'cookies': {}, 'last_login': 1628337539.6938965, 'device_settings': {'app_version': '194.0.0.36.172', 'android_version': 26, 'android_release': '8.0.0', 'dpi': '480dpi', 'resolution': '1080x1920', 'manufacturer': 'Xiaomi', 'device': 'MI 5s', 'model': 'capricorn', 'cpu': 'qcom', 'version_code': '301484483'}, 'user_agent': 'Instagram 194.0.0.36.172 Android (26/8.0.0; 480dpi; 1080x1920; Xiaomi; MI 5s; capricorn; qcom; en_US; 301484483)', 'country': 'US', 'locale': 'en_US'}"
+    },
+    {
+      "username": "victor95804",
+      "psk": "ig0123",
+      "session_id": "{'uuids': {'phone_id': 'd6f76394-751b-417b-8d3b-c8c4368f7d28', 'uuid': '944b3b54-9e8f-424c-8aeb-c2f24fbd6a32', 'client_session_id': 'b0a52453-7f33-4014-97a3-c3a228e17eb8', 'advertising_id': '7d0568e9-cda7-400b-8b54-3dc490020690', 'device_id': 'android-b540fd2c86dbfd5f'}, 'authorization_data': {'ds_user_id': '47648783813', 'sessionid': '47648783813%3AdgCad5SNSQXKjx%3A6', 'should_use_header_over_cookies': True}, 'cookies': {}, 'last_login': 1628328456.0781512, 'device_settings': {'app_version': '194.0.0.36.172', 'android_version': 26, 'android_release': '8.0.0', 'dpi': '480dpi', 'resolution': '1080x1920', 'manufacturer': 'Xiaomi', 'device': 'MI 5s', 'model': 'capricorn', 'cpu': 'qcom', 'version_code': '301484483'}, 'user_agent': 'Instagram 194.0.0.36.172 Android (26/8.0.0; 480dpi; 1080x1920; Xiaomi; MI 5s; capricorn; qcom; en_US; 301484483)', 'country': 'US', 'locale': 'en_US'}"
+    },
+    {
+      "username": "victor958003",
+      "psk": "ig0123",
+      "session_id": "{'uuids': {'phone_id': '81702f62-da42-4967-84be-d36f98041d4e', 'uuid': 'a9c43c97-ec18-466a-ad93-1f612b3f1bed', 'client_session_id': '12e5efdb-710e-4607-84c8-744b007f817e', 'advertising_id': 'd642eac5-9e16-4f25-b652-65651d8c3f6d', 'device_id': 'android-1affc4272f54ff69'}, 'authorization_data': {'ds_user_id': '47826703510', 'sessionid': '47826703510%3Aj84a9q715sttXU%3A29', 'should_use_header_over_cookies': True}, 'cookies': {}, 'last_login': 1628337981.1186535, 'device_settings': {'app_version': '194.0.0.36.172', 'android_version': 26, 'android_release': '8.0.0', 'dpi': '480dpi', 'resolution': '1080x1920', 'manufacturer': 'Xiaomi', 'device': 'MI 5s', 'model': 'capricorn', 'cpu': 'qcom', 'version_code': '301484483'}, 'user_agent': 'Instagram 194.0.0.36.172 Android (26/8.0.0; 480dpi; 1080x1920; Xiaomi; MI 5s; capricorn; qcom; en_US; 301484483)', 'country': 'US', 'locale': 'en_US'}"
+    },
+    {
+      "username": "victor958002",
+      "psk": "ig0123",
+      "session_id": "{'uuids': {'phone_id': 'e5eb3006-0bb2-4fdd-acc1-fec6cc42758f', 'uuid': '0ec46a7d-5812-43bc-ac02-435baab8e24d', 'client_session_id': '5519f93a-79bb-4c1b-b97b-18c1eebb39de', 'advertising_id': 'c6ef1566-0d02-4d8c-b633-fcfe1fd5ac07', 'device_id': 'android-7e44ecf721e92de3'}, 'authorization_data': {'ds_user_id': '47691235222', 'sessionid': '47691235222%3AgrT24FaBGgM6sH%3A17', 'should_use_header_over_cookies': True}, 'cookies': {}, 'last_login': 1628338244.8960912, 'device_settings': {'app_version': '194.0.0.36.172', 'android_version': 26, 'android_release': '8.0.0', 'dpi': '480dpi', 'resolution': '1080x1920', 'manufacturer': 'Xiaomi', 'device': 'MI 5s', 'model': 'capricorn', 'cpu': 'qcom', 'version_code': '301484483'}, 'user_agent': 'Instagram 194.0.0.36.172 Android (26/8.0.0; 480dpi; 1080x1920; Xiaomi; MI 5s; capricorn; qcom; en_US; 301484483)', 'country': 'US', 'locale': 'en_US'}"
+    }
+  ],
+  "mysql_cred": {
+    "host": "148.163.102.242",
+    "user": "fastdon2_groezy",
+    "psk": "Whyitellu$369",
+    "db": "fastdon2_gz_db"
+  }
+}
