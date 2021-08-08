@@ -187,6 +187,43 @@ def func_users(username):
         return '{"status": 2}'
 
 
+@app.route('/posts/<username>')
+def func_posts(username):
+    cl = init()
+    if cl is None:
+        return '{"status": 2}'
+    try:
+        user_id = cl.user_id_from_username(username)
+        user_posts = cl.user_medias(user_id, 80)
+        ret_data = []
+        range_int = 0
+        i = -1
+        while range_int <= 50:
+            i += 1
+            if len(user_posts) < 80:
+                if i == len(user_posts):
+                    break
+            elif i == 80:
+                break
+            try:
+                post_dict = json.loads(user_posts[i].json())
+                if int(post_dict['media_type']) != 1:
+                    continue
+                ret_data.append(
+                    {"media_id": str(post_dict['like_count']), "thumbnail_url": str(post_dict['thumbnail_url']),
+                     "like_count": str(post_dict['like_count'])}
+                )
+            except:
+                pass
+            range_int += 1
+        ret_dict = {"status": 1, "posts": ret_data}
+        return str(ret_dict).replace('\'', '\"')
+    except UserNotFound:
+        return '{"status": 3}'
+    except:
+        return '{"status": 2}'
+
+
 @app.route('/like/<media_url>', methods=['POST'])
 def func_like(media_url):
     db = setup_db()
