@@ -224,8 +224,8 @@ def func_posts(username):
         return '{"status": 2}'
 
 
-@app.route('/like/<media_url>', methods=['POST'])
-def func_like(media_url):
+@app.route('/like/<media_id>', methods=['POST'])
+def func_like(media_id):
     db = setup_db()
     if db is None:
         return '{"status": 2}'
@@ -244,7 +244,6 @@ def func_like(media_url):
         cl = do_login(with_session=True, db1=db, user_uid=gz_ig_users_id, s_id=session_id)
         if cl is None:
             return '{"status": 22}'
-        media_id = cl.media_id(cl.media_pk_from_url(str(media_url)))
         if cl.media_like(media_id):
             return '{"status": 1}'
         return '{"status": 0}'
