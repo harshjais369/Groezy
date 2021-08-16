@@ -39,6 +39,7 @@ def do_login(with_session, db1=None, user_uid=None, s_id=None, username=None, ps
     try:
         if with_session:
             cl = Client(ast.literal_eval(s_id))
+            cl.get_timeline_feed()
             # print("Logged in with Session")
         else:
             try:
@@ -210,7 +211,7 @@ def func_posts(username):
                 if int(post_dict['media_type']) != 1:
                     continue
                 ret_data.append(
-                    {"media_id": str(post_dict['like_count']), "thumbnail_url": str(post_dict['thumbnail_url']),
+                    {"media_id": str(post_dict['pk']), "thumbnail_url": str(post_dict['thumbnail_url']),
                      "like_count": str(post_dict['like_count'])}
                 )
             except:

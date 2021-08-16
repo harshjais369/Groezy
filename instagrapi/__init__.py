@@ -23,6 +23,7 @@ from instagrapi.mixins.public import (
     TopSearchesPublicMixin,
 )
 from instagrapi.mixins.story import StoryMixin
+from instagrapi.mixins.timeline import ReelsMixin
 from instagrapi.mixins.user import UserMixin
 from instagrapi.mixins.video import DownloadVideoMixin, UploadVideoMixin
 
@@ -55,6 +56,7 @@ class Client(
     PasswordMixin,
     DownloadClipMixin,
     UploadClipMixin,
+    ReelsMixin
 ):
     proxy = None
     logger = logging.getLogger("instagrapi")

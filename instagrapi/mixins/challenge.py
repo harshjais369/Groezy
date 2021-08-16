@@ -1,7 +1,6 @@
 import hashlib
 import json
 import time
-from datetime import datetime
 from typing import Dict
 
 import requests
@@ -51,7 +50,7 @@ class ChallengeResolveMixin:
             user_id, nonce_code = challenge_url.split("/")[2:4]
             params = {
                 "guid": self.uuid,
-                "device_id": self.device_id,
+                "device_id": self.android_device_id,
                 "challenge_context": json.dumps(
                     {"step_name": "", "nonce_code": nonce_code, "user_id": user_id}
                 ),
@@ -101,7 +100,7 @@ class ChallengeResolveMixin:
         """
         result = self.last_json
         challenge_url = "https://i.instagram.com%s" % challenge_url
-        enc_password = "#PWD_INSTAGRAM_BROWSER:0:%s:" % datetime.now().strftime("%s")
+        enc_password = "#PWD_INSTAGRAM_BROWSER:0:%s:" % str(int(time.time()))
         instagram_ajax = hashlib.md5(enc_password.encode()).hexdigest()[:12]
         session = requests.Session()
         session.proxies = self.private.proxies

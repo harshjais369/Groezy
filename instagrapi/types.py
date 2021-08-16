@@ -216,6 +216,14 @@ class Story(BaseModel):
     stickers: List[StorySticker]
 
 
+class DirectMedia(BaseModel):
+    id: str
+    media_type: int
+    user: Optional[UserShort]
+    thumbnail_url: Optional[HttpUrl]
+    video_url: Optional[HttpUrl]
+
+
 class DirectMessage(BaseModel):
     id: int  # e.g. 28597946203914980615241927545176064
     user_id: Optional[int]
@@ -225,10 +233,12 @@ class DirectMessage(BaseModel):
     is_shh_mode: Optional[bool]
     reactions: Optional[dict]
     text: Optional[str]
+    media: Optional[DirectMedia]
     media_share: Optional[Media]
     reel_share: Optional[dict]
     story_share: Optional[dict]
     felix_share: Optional[dict]
+    clip: Optional[Media]
     placeholder: Optional[dict]
 
 
