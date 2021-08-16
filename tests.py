@@ -3,11 +3,12 @@ import os
 import os.path
 import random
 import unittest
-from datetime import datetime
+from datetime import datetime, timedelta
 from json.decoder import JSONDecodeError
 from pathlib import Path
 
 from instagrapi import Client
+from instagrapi.exceptions import DirectThreadNotFound
 from instagrapi.story import StoryBuilder
 from instagrapi.types import (
     Account,
@@ -20,18 +21,17 @@ from instagrapi.types import (
     Media,
     MediaOembed,
     Story,
+    StoryHashtag,
     StoryLink,
     StoryLocation,
     StoryMention,
-    StoryHashtag,
     StorySticker,
     User,
     UserShort,
-    Usertag
+    Usertag,
 )
-from instagrapi.zones import UTC
 from instagrapi.utils import generate_jazoest
-from instagrapi.exceptions import DirectThreadNotFound
+from instagrapi.zones import UTC
 
 ACCOUNT_USERNAME = os.environ.get("IG_USERNAME", "instagrapi2")
 ACCOUNT_PASSWORD = os.environ.get("IG_PASSWORD", "yoa5af6deeRujeec")
@@ -91,21 +91,24 @@ class ClientPrivateTestCase(BaseClientMixin, unittest.TestCase):
     def __init__(self, *args, **kwargs):
         filename = f'/tmp/instagrapi_tests_client_settings_{ACCOUNT_USERNAME}.json'
         self.api = Client()
+        settings = {}
         try:
-            settings = self.api.load_settings(filename)
+            st = os.stat(filename)
+            if datetime.fromtimestamp(st.st_mtime) > (datetime.now() - timedelta(seconds=300)):
+                # use only fresh session (5 minutes)
+                settings = self.api.load_settings(filename)
         except FileNotFoundError:
-            settings = {}
+            pass
         except JSONDecodeError as e:
             print('JSONDecodeError when read stored client settings. Use empty settings')
             print(str(e))
-            settings = {}
         self.api.set_settings(settings)
         self.api.request_timeout = 1
         self.set_proxy_if_exists()
         if ACCOUNT_SESSIONID:
             self.api.login_by_sessionid(ACCOUNT_SESSIONID)
         else:
-            self.api.login(ACCOUNT_USERNAME, ACCOUNT_PASSWORD)
+            self.api.login(ACCOUNT_USERNAME, ACCOUNT_PASSWORD, relogin=True)
         self.api.dump_settings(filename)
         super().__init__(*args, **kwargs)
 
@@ -480,13 +483,19 @@ class ClientMediaTestCase(ClientPrivateTestCase):
 
 class ClientCommentTestCase(ClientPrivateTestCase):
 
+    def test_media_comments_amount(self):
+        comments = self.api.media_comments(2154602296692269830, amount=2)
+        self.assertTrue(len(comments) == 2)
+        comments = self.api.media_comments(2154602296692269830, amount=0)
+        self.assertTrue(len(comments) > 2)
+
     def test_media_comments(self):
         comments = self.api.media_comments(2154602296692269830)
         self.assertTrue(len(comments) > 5)
         comment = comments[0]
         self.assertIsInstance(comment, Comment)
-        comment_fields = comment.fields.keys()
-        user_fields = comment.user.fields.keys()
+        comment_fields = comment.__fields__.keys()
+        user_fields = comment.user.__fields__.keys()
         for field in [
             "pk",
             "text",
@@ -879,23 +888,21 @@ class ClienUploadTestCase(ClientPrivateTestCase):
             cleanup(path)
             self.assertTrue(self.api.media_delete(media.id))
 
-    def test_reel_upload(self):
+    def test_clip_upload(self):
         # media_type: 2 (video, not IGTV)
         # product_type: clips
         media_pk = self.api.media_pk_from_url(
             "https://www.instagram.com/p/CEjXskWJ1on/"
         )
-        path = self.api.igtv_download(media_pk)
+        path = self.api.clip_download(media_pk)
         self.assertIsInstance(path, Path)
         try:
-            title = "Test title"
-            caption_text = "Upload reel/clips as IGTV instead video"
-            media = self.api.igtv_upload(
-                path, title, caption_text,
+            caption_text = "Upload clip"
+            media = self.api.clip_upload(
+                path, caption_text,
                 location=self.get_location()
             )
             self.assertIsInstance(media, Media)
-            self.assertEqual(media.title, title)
             self.assertEqual(media.caption_text, caption_text)
             self.assertLocation(media.location)
         finally:
