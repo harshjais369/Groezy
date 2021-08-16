@@ -88,6 +88,7 @@ def init():
     try:
         if P_SETTINGS != '':
             cl = Client(json.loads(P_SETTINGS))
+            cl.get_timeline_feed()
             # print("Logged in with Session")
         else:
             # Session string is empty! ----
