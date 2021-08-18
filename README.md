@@ -3,9 +3,8 @@
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/instagrapi)
 ![Checked with mypy](https://img.shields.io/badge/mypy-checked-blue)
 
-[![Donate](https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png)](https://www.buymeacoffee.com/adw0rd)
 
-# instagrapi - Unofficial Instagram API for Python
+# Groezy Instagram API for Python
 
 Fast and effective Instagram Private API wrapper (public+private requests and challenge resolver) without selenium. Use the most recent version of the API from Instagram, which was obtained using [reverse-engineering with Charles Proxy](https://adw0rd.com/2020/03/26/sniffing-instagram-charles-proxy/en/) and [Proxyman](https://proxyman.io/).
 
@@ -15,8 +14,6 @@ Support **Python >= 3.6**
 
 For any other languages (e.g. C++, C#, F#, D, [Golang](https://github.com/adw0rd/instagrapi-rest/tree/main/golang), Erlang, Elixir, Nim, Haskell, Lisp, Closure, Julia, R, Java, Kotlin, Scala, OCaml, JavaScript, Crystal, Ruby, Rust, [Swift](https://github.com/adw0rd/instagrapi-rest/tree/main/swift), Objective-C, Visual Basic, .NET, Pascal, Perl, Lua, PHP and others), I suggest using [instagrapi-rest](https://github.com/adw0rd/instagrapi-rest)
 
-[Support Chat in Telegram](https://t.me/instagrapi)
-![](https://gist.githubusercontent.com/m8rge/4c2b36369c9f936c02ee883ca8ec89f1/raw/c03fd44ee2b63d7a2a195ff44e9bb071e87b4a40/telegram-single-path-24px.svg) and [GitHub Discussions](https://github.com/adw0rd/instagrapi/discussions)
 
 
 ## Features
@@ -41,7 +38,7 @@ from instagrapi import Client
 cl = Client()
 cl.login(ACCOUNT_USERNAME, ACCOUNT_PASSWORD)
 
-user_id = cl.user_id_from_username("adw0rd")
+user_id = cl.user_id_from_username("harshjais369")
 medias = cl.user_medias(user_id, 20)
 ```
 
@@ -58,13 +55,13 @@ cl.login(USERNAME, PASSWORD, verification_code="<2FA CODE HERE>")
 media_path = cl.video_download(
     cl.media_pk_from_url('https://www.instagram.com/p/CGgDsi7JQdS/')
 )
-adw0rd = cl.user_info_by_username('adw0rd')
+adw0rd = cl.user_info_by_username('harshjais369')
 loc = cl.location_complete(Location(name='Test', lat=42.0, lng=42.0))
 ht = cl.hashtag_info('dhbastards')
 
 cl.video_upload_to_story(
     media_path,
-    "Credits @adw0rd",
+    "Credits @harshjais369",
     mentions=[StoryMention(user=adw0rd, x=0.49892962, y=0.703125, width=0.8333333333333334, height=0.125)],
     locations=[StoryLocation(location=loc, x=0.33, y=0.22, width=0.4, height=0.7)],
     links=[StoryLink(webUri='https://github.com/adw0rd/instagrapi')],
