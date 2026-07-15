@@ -28,6 +28,10 @@ For any other languages (e.g. C++, C#, F#, D, [Golang](https://github.com/adw0rd
 8. [Build stories](https://adw0rd.github.io/instagrapi/usage-guide/story.html) with custom background, font animation, swipe up link and mention users
 9. In the next release, account registration and captcha passing will appear
 
+## App Screenshots
+
+<img src="./Screenshots/Screenshot_20210710-195416.jpg" alt="Main dashboard" title="Main dashboard" width="200"/>
+
 ## Example
 
 ### Basic Usage
@@ -70,7 +74,7 @@ cl.video_upload_to_story(
 ```
 </details>
 
-## Documentation
+## Documentation (Instagrapi API)
 
 * [Index](https://adw0rd.github.io/instagrapi/)
 * [Getting Started](https://adw0rd.github.io/instagrapi/getting-started.html)
